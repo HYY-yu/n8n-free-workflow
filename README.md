@@ -1,32 +1,40 @@
 # n8n Workflow
 
-这是一个 n8n 工作流文件，导入到 [n8n](https://n8n.io/) 中即可立即运行。
-
-## 使用说明
-
-1. 安装并运行 n8n，参考官方文档：https://docs.n8n.io/getting-started/installation/
-2. 下载本仓库中的工作流文件
-3. 打开 n8n 编辑器，在顶部菜单点击“创建工作流”，点击右上角，选择 “import from file...”
-4. 选择文件导入工作流
-5. 根据需要配置凭证和参数
-6. 启动工作流，开始自动化运行！
-
-## 反馈与贡献
-
-欢迎提交 issue 或 pull request，一起完善这个项目！
-
-## 许可协议
-
-[MIT License](LICENSE)
-
----
-
-如果你提供项目名称和具体功能细节，我还能帮你定制更贴合的版本。
-
-
-# n8n Workflow
-
 This is an n8n workflow file. Import it into [n8n](https://n8n.io/) to run it immediately.
+
+## Showcases
+
+#### Knowleage-Cards
+
+Website   
+
+<img src="https://res.cloudinary.com/dkjpze65u/image/upload/v1765449396/reyrxlc9lcwvojyiq7sk.png" 
+     alt="描述" 
+     width="300" 
+     height="200" 
+     style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); transition: box-shadow 0.3s ease;">
+
+Cards  
+
+- **Old Paper Under the Setting Sun:** Elegant and classical, suitable for literature and history-related knowledge.
+
+<img src="https://res.cloudinary.com/dkjpze65u/image/upload/v1763695334/tvbpvn3aashbizdlvtc4.png" alt="Description" width="200" height="300" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); transition: box-shadow 0.3s ease;" />
+
+- **Clear Spring and Rocky Stream:** Clean and simple, suitable for technical and tool-related knowledge.
+
+<img src="https://res.cloudinary.com/dkjpze65u/image/upload/v1763695307/z6ryfu8a5dqihxkiumfq.png" alt="Description" width="300" height="200" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); transition: box-shadow 0.3s ease;" />
+
+- **Misty Neon Lights**: Dreamy and dazzling, suitable for creative and art-related content
+
+<img src="https://res.cloudinary.com/dkjpze65u/image/upload/v1763695340/biymmuqwqdfgvdbg4s1y.png" alt="Description" width="200" height="300" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); transition: box-shadow 0.3s ease;" />
+
+- **Green Field Letters**: Natural and gentle, suitable for health and lifestyle knowledge
+
+<img src="https://res.cloudinary.com/dkjpze65u/image/upload/v1763695341/kaj2l7z1omljijxhhbtb.png" alt="Description" width="300" height="200" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); transition: box-shadow 0.3s ease;" />
+
+- **Simple Geometry**: Minimalist and modern, suitable for business and academic content
+
+<img src="https://res.cloudinary.com/dkjpze65u/image/upload/v1763694997/w9phy8jfbqcejcv25mux.png" alt="描述" width="300" height="200" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); transition: box-shadow 0.3s ease;" />
 
 ## Instructions for Use
 
