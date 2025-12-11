@@ -1,0 +1,693 @@
+{
+  "name": "知识卡片 - 英文版",
+  "nodes": [
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "4397baa5-de4e-41ee-9fd2-e52b39b9d5ff",
+              "name": "outputCard",
+              "value": "={{ (() => {\n  const raw = $json.output ?? '';\n  const m = raw.match(/```(?:json)?\\s*([\\s\\S]*?)\\s*```/);\n  const obj =  JSON.parse((m ? m[1] : raw).trim());\n  return obj.cards;\n})() }}",
+              "type": "array"
+            },
+            {
+              "id": "44bbf812-b5a5-4638-9ad6-10cde831ca03",
+              "name": "style_css",
+              "value": "/* 故纸斜阳 - 复古温暖卡片风格 */\n.card {\n    width: 100%;\n    padding: 28px;\n    background-color: #F5F1E8;\n    border: 1px solid #D3CBBF;\n    border-radius: 4px;\n    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);\n    font-family: \"Source Serif Pro\", Georgia, \"Times New Roman\", serif;\n    color: #424242;\n}\n\n/* 标题样式 */\n.card h1, .card h2, .card h3, .card h4, .card h5, .card h6 {\n    color: #5D4037;\n    font-weight: 600;\n    margin-bottom: 18px;\n}\n\n.card h1 {\n    font-size: 26px;\n}\n\n.card h2 {\n    font-size: 22px;\n}\n\n.card h3 {\n    font-size: 20px;\n}\n\n/* 段落样式 */\n.card p {\n    font-size: 16px;\n    line-height: 1.8;\n    color: #424242;\n}\n\n/* 强调文本样式 */\n.card strong {\n    font-weight: 700;\n    color: #424242;\n}\n\n/* 代码块样式 */\n.card code {\n    font-family: Consolas, \"Courier New\", monospace;\n    background-color: #F9F6EF;\n    border: 1px dashed #D3CBBF;\n    color: #5D4037;\n    padding: 2px 4px;\n}\n\n/* 引用块样式 */\n.card blockquote {\n    background-color: #F9F6EF;\n    border-left: 3px solid #A1887F;\n    padding: 16px;\n    font-style: italic;\n    color: #5D4037;\n}\n\n/* 列表样式 */\n.card ul {\n    list-style-type: disc;\n    padding-left: 22px;\n    line-height: 1.8;\n}\n\n.card ol {\n    list-style-type: decimal;\n    padding-left: 22px;\n    line-height: 1.8;\n}\n\n.card li {\n    margin-bottom: 8px;\n}\n\n/* 表格样式 */\n.card table {\n    width: 100%;\n    border-collapse: collapse;\n}\n\n.card th, .card td {\n    border: 1px solid #D3CBBF;\n    padding: 8px;\n    word-break: break-word;\n    overflow-wrap: anywhere;\n}\n\n.card th {\n    background-color: #EFEBE9;\n    text-align: center;\n    color: #5D4037;\n    font-weight: 600;\n}\n\n.card td {\n    color: #424242;\n}\n\n/* 分割线样式 */\n.card hr {\n    height: 1px;\n    border: none;\n    background-color: #D3CBBF;\n    margin: 24px 0;\n}\n\n/* span样式保持继承 */\n.card span {\n    /* 继承父级样式，无需特别定义 */\n}\n/* END故纸斜阳 */\n/* 清泉石涧 - 卡片UI风格（终极版） */\n.card {\n  width: 100%;\n  padding: 24px;\n  background: #FFFFFF;\n  border-radius: 16px;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04), 0 8px 16px rgba(0, 0, 0, 0.04);\n  font-family: \"Inter\", \"Noto Sans SC\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif;\n}\n\n/* 标题 */\n.card h1 { font-size: 24px; font-weight: 600; color: #2C3E50; margin-bottom: 16px; }\n.card h2 { font-size: 20px; font-weight: 600; color: #2C3E50; margin-bottom: 16px; }\n.card h3 { font-size: 18px; font-weight: 600; color: #2C3E50; margin-bottom: 16px; }\n.card h4, .card h5, .card h6 { font-size: 18px; font-weight: 600; color: #2C3E50; margin-bottom: 16px; }\n\n/* 段落 */\n.card p { color: #596275; font-size: 15px; line-height: 1.7; margin-bottom: 16px; }\n\n/* 强调与高亮 */\n.card strong { color: #2C3E50; font-weight: 700; }\n.card .highlight { color: #4DB6AC; }\n\n/* 代码块 - 小巧版 */\n.card code { \n  font-family: \"Fira Code\", \"JetBrains Mono\", monospace; \n  background: #F0F4F8; \n  padding: 3px 5px; \n  border-radius: 4px; \n  color: #2C3E50; \n}\n\n/* 引用块 */\n.card blockquote { \n  border-left: 3px solid #4DB6AC; \n  padding-left: 16px; \n  color: #596275; \n  margin: 16px 0; \n}\n\n/* 无序列表 - 溪流水滴风格 */\n.card ul { \n  list-style-type: none; \n  padding-left: 0; \n  margin-bottom: 16px; \n}\n.card ul > li { \n  position: relative; \n  padding-left: 28px; \n  margin-bottom: 12px; \n  color: #596275; \n  line-height: 1.8; \n}\n.card ul > li::before { \n  content: \"\"; \n  position: absolute; \n  left: 0; \n  top: 8px; \n  width: 8px; \n  height: 8px; \n  background: #4DB6AC; \n  border-radius: 50%; \n  box-shadow: 0 2px 4px rgba(77, 182, 172, 0.3); \n}\n.card ul ul { padding-left: 20px; }\n.card ul ul > li::before { \n  background: #81C784; \n  top: 9px; \n}\n\n/* 有序列表 - 卵石编号风格 */\n.card ol { \n  list-style-type: none; \n  padding-left: 0; \n  margin-bottom: 16px; \n}\n.card ol > li { \n  position: relative; \n  padding-left: 36px; \n  margin-bottom: 12px; \n  color: #596275; \n  line-height: 1.8; \n}\n.card ol > li::before { \n  content: counter(item) \". \"; \n  counter-increment: item; \n  position: absolute; \n  left: 0; \n  top: 0; \n  color: #FFFFFF; \n  background: linear-gradient(135deg, #4DB6AC, #26A69A); \n  width: 28px; \n  height: 28px; \n  border-radius: 50%; \n  display: flex; \n  align-items: center; \n  justify-content: center; \n  font-size: 14px; \n  font-weight: 600; \n  box-shadow: 0 4px 8px rgba(77, 182, 172, 0.3); \n}\n.card ol { counter-reset: item; }\n.card ol ol { counter-reset: subitem; padding-left: 20px; }\n.card ol ol > li::before { \n  content: counter(subitem, lower-alpha) \") \"; \n  counter-increment: subitem; \n  background: linear-gradient(135deg, #81C784, #66BB6A); \n  font-size: 12px; \n  width: 24px; \n  height: 24px; \n}\n\n/* 嵌套重置 */\n.card ul ul, .card ol ol { margin-bottom: 8px; }\n.card ul ul > li, .card ol ol > li { \n  padding-left: 20px; \n  margin-bottom: 8px; \n  line-height: 1.8; \n}\n\n/* 表格 */\n.card table { width: 100%; border-collapse: collapse; margin-bottom: 16px; }\n.card td, .card th { padding: 12px 0; text-align: left; word-break: break-word; overflow-wrap: anywhere; }\n.card tr { border-bottom: 1px solid #EAECEE; }\n.card th { font-weight: 600; color: #2C3E50; }\n\n/* 分割线 */\n.card hr { height: 1px; background: #EAECEE; border: none; margin: 20px 0; }\n/* END清泉石涧 */\n/* 雾海霓虹 - 赛博朋克卡片UI风格 */\n.card {\n  width: 100%;\n  padding: 30px;\n  background: #1A1D24;\n  border: none;\n  border-top: 2px solid #F02E8A;\n  border-radius: 10px;\n  box-shadow: 0 0 20px rgba(240, 46, 138, 0.3);\n  font-family: \"Oxanium\", \"Orbitron\", \"Exo 2\", sans-serif;\n}\n\n.card h1 { font-size: 28px; font-weight: 700; letter-spacing: 0.5px; color: #FFFFFF; text-shadow: 0 0 4px rgba(240, 46, 138, 0.4); margin: 0 0 16px; }\n.card h2 { font-size: 24px; font-weight: 700; letter-spacing: 0.5px; color: #FFFFFF; text-shadow: 0 0 4px rgba(240, 46, 138, 0.4); margin: 0 0 14px; }\n.card h3 { font-size: 22px; font-weight: 700; letter-spacing: 0.5px; color: #FFFFFF; text-shadow: 0 0 4px rgba(240, 46, 138, 0.4); margin: 0 0 12px; }\n.card h4, .card h5, .card h6 { font-weight: 700; letter-spacing: 0.5px; color: #FFFFFF; text-shadow: 0 0 4px rgba(240, 46, 138, 0.4); }\n\n.card p { color: #A9B1D6; font-size: 16px; line-height: 1.6; margin: 0 0 16px; }\n.card span { color: #00BFFF; }\n.card strong { color: #F02E8A; font-weight: 700; }\n\n.card code {\n  font-family: \"Victor Mono\", monospace;\n  background: #101216;\n  padding: 16px;\n  border-left: 2px solid #00BFFF;\n  border-radius: 0;\n  margin: 8px 0;\n  display: block;\n}\n\n.card blockquote {\n  color: #00BFFF;\n  font-style: italic;\n  position: relative;\n  margin: 24px 0;\n}\n.card blockquote::before { content: \"//\"; color: #F02E8A; position: absolute; left: -20px; }\n.card blockquote::after { content: \"//\"; color: #F02E8A; position: absolute; right: -20px; }\n\n.card ul, .card ol { color: #A9B1D6;padding-left: 20px; margin: 16px 0; list-style: none; }\n.card li { position: relative; margin: 8px 0; }\n.card li::before { content: \">\"; color: #F02E8A; position: absolute; left: -20px; font-weight: bold; }\n\n.card table { width: 100%; border-collapse: collapse; margin: 16px 0; color: #A9B1D6; }\n.card th, .card td { border: 1px solid #343A4A; padding: 12px 8px; text-align: left; word-break: break-word; overflow-wrap: anywhere;}\n.card th { border-bottom: 2px solid #F02E8A; color: #FFFFFF; font-weight: 700; }\n.card tr:nth-child(even) { background: #222630; }\n\n.card hr {\n  height: 1px;\n  border: none;\n  background-image: linear-gradient(to right, rgba(240, 46, 138, 0), #F02E8A, rgba(240, 46, 138, 0));\n  margin: 24px 0;\n}\n\n.card br { display: block; }\n/* END雾海霓虹 */\n/* 绿野信笺 - 森林风 */\n.card {\n  width: 100%;\n  padding: 26px;\n  background-color: #FBFBF7;\n  border: 1px solid #8A9A5B;\n  box-shadow: 0 4px 8px rgba(45, 56, 31, 0.1);\n  border-radius: 6px;\n  font-family: \"Lato\", \"PT Sans\", \"Open Sans\", sans-serif;\n}\n\n.card h1 { color: #2D381F; font-size: 25px; font-weight: 700; }\n.card h2 { color: #2D381F; font-size: 21px; font-weight: 700; }\n.card h3 { color: #2D381F; font-size: 19px; font-weight: 700; }\n.card h4, .card h5, .card h6 { color: #2D381F; font-weight: 700; }\n\n.card p { color: #6B6B5E; font-size: 16px; line-height: 1.75; }\n.card span { color: inherit; }\n\n.card strong { color: #2D381F; font-weight: bold; }\n\n.card code {\n  background-color: #EAF2E0;\n  padding: 3px 5px;\n  border-radius: 4px;\n  color: #2D381F;\n  font-family: inherit;\n}\n\n.card blockquote {\n  background-color: #EAF2E0;\n  border-left: 3px solid #8A9A5B;\n  padding: 14px 18px;\n  margin: 16px 0;\n  color: #6B6B5E;\n  font-style: italic;\n}\n\n.card ul, .card ol {\n  padding-left: 20px;\n  margin: 16px 0;\n  line-height: 1.8;\n}\n.card ul { list-style-type: disc; }\n.card ol { list-style-type: decimal; }\n.card ul li, .card ol li { \n  color: #8A9A5B; \n  margin-bottom: 6px; \n}\n.card ul li::marker, .card ol li::marker { color: #8A9A5B; }\n\n.card table {\n  width: 100%;\n  border-collapse: collapse;\n  margin: 16px 0;\n}\n.card th {\n  background-color: #EAF2E0;\n  text-align: left;\n  padding: 12px 8px;\n  border-bottom: 1px solid #D9DDCD;\n  word-break: break-word;\n  overflow-wrap: anywhere;\n}\n.card td {\n  padding: 12px 8px;\n  border-bottom: 1px solid #D9DDCD;\n  word-break: break-word;\n  overflow-wrap: anywhere;\n}\n\n.card hr {\n  border: none;\n  height: 2px;\n  background: linear-gradient(to right, transparent, #8A9A5B 50%, transparent);\n  border-style: dashed;\n  margin: 22px 0;\n}\n\n.card br { display: block; }\n/* END绿野信笺 */\n/* 简白几何 - 极简包豪斯卡片UI风格 */\n.card {\n  width: 100%;\n  padding: 32px;\n  background-color: #FFFFFF;\n  border: 2px solid #000000;\n  border-radius: 0;\n  font-family: \"Montserrat\", \"Helvetica Neue\", Arial, sans-serif;\n}\n\n.card h1 { color: #000000; font-size: 22px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }\n.card h2 { color: #000000; font-size: 18px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }\n.card h3, .card h4, .card h5, .card h6 { color: #000000; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }\n\n.card p { color: #666666; font-size: 14px; line-height: 1.6; }\n.card span { color: inherit; }\n\n.card strong { color: #FFD600; font-weight: inherit; }\n\n.card code {\n  background-color: #F2F2F2;\n  padding: 3px 5px;\n  font-family: \"Roboto Mono\", monospace;\n  color: #000000;\n\n}\n\n.card blockquote {\n  border-left: 4px solid #000000;\n  padding-left: 16px;\n  margin: 20px 0;\n  color: #000000;\n  font-style: normal;\n}\n\n.card ul, .card ol {\n  padding-left: 18px;\n  margin: 16px 0;\n  line-height: 1.8;\n}\n.card ul { list-style-type: square; }\n.card ol { list-style-type: decimal; }\n.card ul li::marker, .card ol li::marker { color: #000000; }\n\n.card table {\n  width: 100%;\n  border-collapse: collapse;\n  margin: 16px 0;\n}\n.card th, .card td {\n  border: 2px solid #000000;\n  padding: 10px 8px;\n  word-break: break-word;\n  overflow-wrap: anywhere;\n}\n.card th {\n  background-color: #FFD600;\n  color: #000000;\n  font-weight: 700;\n}\n\n.card hr {\n  border: none;\n  height: 2px;\n  background-color: #000000;\n  margin: 30px 0;\n}\n\n.card br { display: block; }\n/* END简白几何 */",
+              "type": "string"
+            },
+            {
+              "id": "1d1edf0a-2038-4974-880e-07aa1b6c504c",
+              "name": "selectStyle",
+              "value": "={{ $('Form Fields').item.json['Card Style'].split(' - ')[0].trim() }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2592,
+        768
+      ],
+      "id": "ed37105d-f933-43dd-a52a-f04c64d5df94",
+      "name": "Set Fields And CSS"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3326d93f-e3cf-45b6-a695-ed4246fa80e6",
+              "name": "Source Article",
+              "value": "={{ $('On form submission1').item.json['原始文章'] }}",
+              "type": "string"
+            },
+            {
+              "id": "f089ebad-e41f-45ef-a51e-ab5f13d18e40",
+              "name": "Additional Req",
+              "value": "={{ $('On form submission1').item.json['额外要求'] }}",
+              "type": "string"
+            },
+            {
+              "id": "4e45b1ec-550a-4b2a-8f5d-a5f5037d8054",
+              "name": "Suggest Card Num",
+              "value": "={{ $('On form submission1').item.json['预期卡片数量'] }}",
+              "type": "string"
+            },
+            {
+              "id": "07820d68-79f3-48eb-8505-d8d7c31f6c58",
+              "name": "Card Style",
+              "value": "={{ $('On form submission1').item.json['卡片风格'] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -128,
+        768
+      ],
+      "id": "a545ab96-7db8-4e72-8dde-46bf56c41439",
+      "name": "Form Fields"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 获取输入数据中的 Art 字段\nconst art = $input.first().json['Source Article'];\n\n$input.first().json.IsUrl = art.trim().startsWith('http://') || art.trim().startsWith('https://');\nconsole.log($input)\nreturn $input.all();\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        64,
+        768
+      ],
+      "id": "62669e10-2055-4f99-bf32-0dfa94f4e316",
+      "name": "Check Url"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json[\"Source Article\"] }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "User-Agent",
+              "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+            }
+          ]
+        },
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        656,
+        384
+      ],
+      "id": "12fddd77-a695-4e67-9b3b-3bb59f4c8776",
+      "name": "Fetch Website"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3639b76e-3ae9-4461-8d4c-552bf1c8a6bf",
+              "name": "HTML",
+              "type": "string",
+              "value": "={{ $json?.data.match(/<body[^>]*>([\\s\\S]*?)<\\/body>/i)[1] }}"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "include": "selected",
+        "includeFields": "HTML",
+        "options": {}
+      },
+      "id": "c5aeb5c5-018d-4e7a-9087-db0aa2f3706c",
+      "name": "Exctract HTML Body",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        1152,
+        384
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "89b927c9-ddc1-4735-a0ea-c1e50a057f76",
+              "name": "HTML",
+              "type": "string",
+              "value": "={{ ($json.HTML || \"HTML BODY CONTENT FOR THIS SEARCH RESULT IS NOT AVAILABLE\").replace(/<script[^>]*>([\\s\\S]*?)<\\/script>|<style[^>]*>([\\s\\S]*?)<\\/style>|<noscript[^>]*>([\\s\\S]*?)<\\/noscript>|<!--[\\s\\S]*?-->|<iframe[^>]*>([\\s\\S]*?)<\\/iframe>|<object[^>]*>([\\s\\S]*?)<\\/object>|<embed[^>]*>([\\s\\S]*?)<\\/embed>|<video[^>]*>([\\s\\S]*?)<\\/video>|<audio[^>]*>([\\s\\S]*?)<\\/audio>|<svg[^>]*>([\\s\\S]*?)<\\/svg>/ig, '')}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8134c8ca-65af-4d7d-9f39-cfd6908f6176",
+      "name": "Remove extra tags",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        1360,
+        384
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "92b08041-799b-4335-aefe-3781a42f8ec0",
+              "name": "HTML",
+              "type": "string",
+              "value": "={{ $json.HTML.replace(/href\\s*=\\s*\"(.+?)\"/gi, 'href=\"NOURL\"').replace(/src\\s*=\\s*\"(.+?)\"/gi, 'src=\"NOIMG\"')}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8a1b1c94-d418-4681-96d2-3ff991c7de75",
+      "name": "Simplify output",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        1600,
+        384
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "html": "={{ $json.HTML }}",
+        "destinationKey": "page_content",
+        "options": {}
+      },
+      "id": "d6756005-2d0e-4684-9474-8bcc7f17ab6c",
+      "name": "Convert to Markdown",
+      "type": "n8n-nodes-base.markdown",
+      "position": [
+        1824,
+        384
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "48a78432-2103-44ed-b4d6-7e429ae9e742",
+              "name": "page_content",
+              "type": "string",
+              "value": "={{ $json.page_content }}"
+            },
+            {
+              "id": "ec0130f1-16a2-474f-a7cb-96d0e6fc644f",
+              "name": "page_length",
+              "type": "string",
+              "value": "={{ $json.page_content.length }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c366dfb0-eb89-4258-a621-752742a84ec5",
+      "name": "Send Page Content",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        2032,
+        384
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "errorMessage": "={{ $json.error }}"
+      },
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        1152,
+        176
+      ],
+      "id": "7b4ea8c4-30c2-4a10-b7c9-2a0552008c82",
+      "name": "Stop and Error"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "version": 2,
+            "leftValue": "",
+            "caseSensitive": true,
+            "typeValidation": "strict"
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "33937446-5010-47d2-b98f-2f0ceae3fbf5",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              },
+              "leftValue": "={{ $json.hasOwnProperty('error') }}",
+              "rightValue": ""
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "451e9411-adb5-40a3-8044-6f14f5d7d8b8",
+      "name": "Is error",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        896,
+        256
+      ],
+      "typeVersion": 2.2
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "bc6faf22-8a40-4117-a947-f1323378607b",
+              "leftValue": "={{ $json.IsUrl }}",
+              "rightValue": "true",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        272,
+        768
+      ],
+      "id": "c42f34ee-583d-4418-8ca1-14c86bec716d",
+      "name": "Is Url"
+    },
+    {
+      "parameters": {
+        "model": "xai/grok-4-fast-reasoning",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatVercelAiGateway",
+      "typeVersion": 1,
+      "position": [
+        2128,
+        976
+      ],
+      "id": "2ebc3eb8-87c5-4b4b-8a20-7c0f3f9fc40b",
+      "name": "Vercel AI Gateway Chat Model",
+      "credentials": {
+        "vercelAiGatewayApi": {
+          "id": "JrsLyJ2nv8Yq8CjB",
+          "name": "Vercel AI Gateway account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "formTitle": "Cards",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Source Article",
+              "fieldType": "textarea",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Card Style",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Sunkissed Parchment"
+                  },
+                  {
+                    "option": "Stone Creek Serenity"
+                  },
+                  {
+                    "option": "Neon Haze"
+                  },
+                  {
+                    "option": "Verdant Script"
+                  },
+                  {
+                    "option": "Bauhaus Blanc"
+                  }
+                ]
+              },
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Suggest Card Num",
+              "fieldType": "number"
+            },
+            {
+              "fieldLabel": "Additional Req"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.3,
+      "position": [
+        -304,
+        768
+      ],
+      "id": "0128eeaa-4a78-47a0-a9c0-04ff6845c9af",
+      "name": "On form submission2",
+      "webhookId": "fb197c4f-c760-4a10-9eb0-b72e8d4ebbf5"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Markdown ：\n{{ $json.IsUrl ? $('Send Page Content').first().json['page_content'] : $json['Source Article'] }}\n\nAdditional Req：\n{{ $('Form Fields').first().json['Additional Req'] }}\n\n",
+        "options": {
+          "systemMessage": "=# 角色和任务\n你是一位资深的知识结构分析师和前端工程师。你的任务是分析用户提供的 Markdown 文本，并从中自动识别和提取出可用于“速查”的知识卡片。对于识别出的每一个知识点，你必须根据其类型，生成相应的 HTML 结构，以保证卡片的轻量化和可读性。\n\n# 步骤和要求\n\n- 步骤要求：\n\n1. 分析和识别： 仔细阅读提供的 Markdown 文本，结合用户的要求（可能没有），找出至少 {{ $('Form Fields').item.json[\"Suggest Card Num\"] }} 个最具价值、最适合做成速查卡片的知识点。\n\n2. 分类： 为每个识别出的知识点分配一个卡片类型。你只能使用以下卡片类型：\n概念说明 (CONCEPT)：核心定义、基本解释。\n对比分析 (COMPARE)：不同事物、方法、特性的差异和相似之处。\n演进历程 (EVOLUTION)：事物的历史发展、版本迭代、阶段变化。\n结构组成 (STRUCTURE)：一个整体的组成部分、层级关系、依赖关系。\n操作流程 (PROCESS)：步骤、命令序列、操作指南。\n速查清单 (CHECKLIST)：高频属性、参数、或关键注意事项的快速列表。\n\n3. HTML 输出卡片：\n对于每一个卡片，你必须生成一个独立的 HTML 结构。使用语义化的 HTML 标签 (<p>、<h1>-<h6>、<br>、<code>、<blockquote>、<span>、<strong>、<ul>、<ol>、<table>、<br>、<hr>)，禁止带有 CSS。所有卡片必须包含一个用于速查的标题（卡片名称）。所有卡片必须包含一个用于大模型识别的注释。\n\n注意卡片的语言，必须是用户提交的 Markdown 的语言。\n\n- **语言要求**：\n根据用户的 Markdown 的语言，生成对应语言的知识点。 （比如： 中文Markdown生成中文知识点、英文Markdown生成英文知识点）\n\n4. 长度控制\n最后检视生成的卡片行数，尽量控制在 10-15 行左右，精简知识。\n\n\n# 输出格式\n\n严格的 json 格式，按如下示例输出，处理每一张卡片，且要求输出的 json 可以被直接使用，禁止输出 Markdown 标记 如 ``` ：\n\n{\n  \"cards\": [\n    {\n      \"name\": \"\",\n      \"type\": \"卡片的具体分类\",\n      \"html_content\": \"纯粹的 HTML 内容，不含任何非法字符\"\n    }\n  ]\n}\n\n针对特定卡片的 HTML 结构一些示例 (不一定要完全遵守，可自行优化，但只允许使用常用的 HTML 标签)\n卡片类型 | 知识点内容 | HTML/CSS 结构建议\n---|---|---\n概念说明 | 什么是“闭包”？| 一个 <h2>（概念名称）和一段 <p>（精炼定义），以及一个 <ul> 标记的“关键点列表”。\n对比分析 | 方法A vs. 方法B | 一个 <section> 包含两个等宽的 <div>，用边框和背景色区分，并用 <ul> 清晰地列出对比项。\n操作流程 | 部署服务的步骤 | 一个有序列表 <ol>，每一步都用 <li> 包含。关键命令用 <code> 标签突出。"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        2256,
+        768
+      ],
+      "id": "183b98c9-8dc5-4f9a-a344-8e9000355f22",
+      "name": "LLM Card"
+    },
+    {
+      "parameters": {
+        "jsCode": "// -----------------------------------------------------------\n// n8n Function / Code 节点 - 取出指定名称的 CSS 代码块\n// -----------------------------------------------------------\n\n// ---------- 辅助函数 ----------\n/**\n * 把字符串里的正则特殊字符转义，防止在 RegExp 中出错。\n * @param {string} s\n * @returns {string}\n */\nfunction escapeRegExp(s) {\n    return s.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&');\n}\n\n// ---------- 主体 ----------\nreturn items.map(item => {\n    const data = item.json;                     // 当前项的原始 JSON\n    const fullCss = data.style_css || '';       // 完整的 CSS 文本\n    const targetName = (data.selectStyle || '').trim(); // 需要的名称，例如 “斜阳草书”\n\n    // 若没有提供名称，直接返回空字符串\n    if (!targetName) {\n        data.selectCSS = '';\n        return { json: data };\n    }\n\n    // 1️⃣ 找到 “开始” 注释  (例: /* 斜阳草书 - 复古温暖卡片风格 */)\n    const startCommentPattern = new RegExp(\n        `/\\\\*\\\\s*${escapeRegExp(targetName)}\\\\s*-.*?\\\\*/`,\n        'i'\n    );\n    const startMatch = fullCss.match(startCommentPattern);\n    if (!startMatch) {\n        // 未找到对应块，返回空\n        data.selectCSS = '';\n        return { json: data };\n    }\n    const startIdx = fullCss.indexOf(startMatch[0]) + startMatch[0].length;\n\n    // 2️⃣ 找到 “结束” 注释  (例: /* END斜阳草书 */)\n    const endComment = `/* END${targetName} */`;\n    const endIdx = fullCss.indexOf(endComment, startIdx);\n    if (endIdx === -1) {\n        // 结束标记缺失，同样返回空\n        data.selectCSS = '';\n        return { json: data };\n    }\n\n    // 3️⃣ 取出两标记之间的内容（含首尾换行，去掉多余空格）\n    const extracted = fullCss.substring(startIdx, endIdx).trim();\n\n    // 把结果写回新字段\n    data.selectCSS = extracted;\n\n    // 返回完整项（其它字段保持不变）\n    return { json: data };\n});\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2800,
+        768
+      ],
+      "id": "24fbe922-411b-46be-9dfe-a40a66a2223d",
+      "name": "Find CSS"
+    },
+    {
+      "parameters": {
+        "jsCode": "// ---------------------------------------------------\n// n8n Function / Code 节点\n// ---------------------------------------------------\n\n// 读取输入字段\nconst data = items[0].json;               // 假设只有一条输入记录\nconst cards = data.outputCard || [];      // [{ name, type, html_content }, ...]\nconst css   = data.selectCSS ?? '';       // 整段 CSS\n\n// 把每个 outputCard 项转成目标结构\nconst transformed = cards.map(card => ({\n    type:    card.type,\n    content: card.html_content.replace(/\\\"/g, '\\\\\"'),\n    css:     css.replace(/\\\"/g, '\\\\\"')\n}));\n\n// 返回一个含有 htmlData 字段的单条 item（不压平）\nreturn [\n    {\n        json: {\n            htmlData: transformed\n        }\n    }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3008,
+        768
+      ],
+      "id": "b49d9f74-6659-4e3a-b8eb-6e21a36f6a76",
+      "name": "Make HTML Data"
+    },
+    {
+      "parameters": {
+        "html": "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n\n<head>\n    <!-- ... head 内容保持不变 ... -->\n\n    <style>\n        /* --- 全局和主题设置 --- (无变化) */\n:root {\n    --bg-color: #f5f5f5;\n    --card-bg: #ffffff;\n    --text-color: #212121;\n    --primary-color: #6200ea;\n    --shadow-color: rgba(0, 0, 0, 0.15);\n    --nav-btn-bg: rgba(255, 255, 255, 0.7);\n    --nav-btn-color: #333;\n    \n    /* 卡片尺寸变量 - 横版模式默认 */\n    --card-width: 600px;\n    --card-height: 400px;\n    --card-half-width: 300px;\n    --card-half-height: 200px;\n    --scale-factor: 1;\n}\n\nbody.portrait-mode {\n    --card-width: 400px;\n    --card-height: 600px;\n    --card-half-width: 200px;\n    --card-half-height: 300px;\n    --scale-factor: 0.85;\n}\n\nbody.dark-mode {\n    --bg-color: #121212;\n    --card-bg: #1e1e1e;\n    --text-color: #e0e0e0;\n    --primary-color: #bb86fc;\n    --shadow-color: rgba(0, 0, 0, 0.5);\n    --nav-btn-bg: rgba(30, 30, 30, 0.7);\n    --nav-btn-color: #f5f5f5;\n}\n\n/* --- 基础样式 --- (无变化) */\n* { box-sizing: border-box; margin: 0; padding: 0; }\nbody { font-family: 'Roboto', sans-serif; background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.3s, color 0.3s; overflow: hidden; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }\n#app-container { display: flex; flex-direction: column; height: 100vh; padding: 2rem; }\nheader { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }\nheader h1 { font-weight: 400; }\n.header-controls { display: flex; gap: 8px; align-items: center; }\n#orientation-toggle { background: none; border: none; cursor: pointer; padding: 8px; border-radius: 50%; color: var(--text-color); transition: all 0.2s ease; }\n#orientation-toggle:hover { background-color: var(--nav-btn-bg); transform: scale(1.1); }\n#orientation-toggle svg { width: 24px; height: 24px; }\nmain { flex-grow: 1; display: flex; justify-content: center; align-items: center; }\n\n\n/* --- 卡片轮播 (优化居中和蒙版) --- */\n.card-carousel {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    width: 100%;\n    max-width: 1200px;\n    position: relative;\n    height: var(--card-height); /* 确保容器高度固定 */\n}\n\n.card-stack-wrapper {\n    position: relative;\n    width: var(--card-width);\n    height: var(--card-height);\n    perspective: 1500px;\n    transition: width 0.5s ease-in-out, height 0.5s ease-in-out;\n    z-index: 10; /* 确保卡片容器在蒙版之上 */\n}\n\n#card-stack {\n    position: relative;\n    width: 100%;\n    height: 100%;\n    transform-style: preserve-3d;\n}\n\n/* --- 卡片样式 (修复居中定位) --- */\n.card {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    width: 100%;\n    height: 100%;\n    background-color: var(--card-bg);\n    border-radius: 16px;\n    box-shadow: 0 8px 30px var(--shadow-color);\n    padding: 24px;\n    overflow-y: auto;\n    opacity: 0;\n    transform: translate(-50%, -50%) scale(0.5);\n    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;\n    backface-visibility: hidden;\n    cursor: pointer;\n}\n\n.card.active {\n    opacity: 1;\n    transform: translate(-50%, -50%) scale(1);\n    z-index: 10;\n    cursor: default;\n}\n.card.prev-1 { opacity: 1; transform: translate(-50%, -50%) translateX(-33%) scale(0.85); z-index: 9; }\n.card.prev-2 { opacity: 1; transform: translate(-50%, -50%) translateX(-48%) scale(0.7); z-index: 8; }\n.card.next-1 { opacity: 1; transform: translate(-50%, -50%) translateX(33%) scale(0.85); z-index: 9; }\n.card.next-2 { opacity: 1; transform: translate(-50%, -50%) translateX(48%) scale(0.7); z-index: 8; }\n.card.hidden { opacity: 0; transform: translate(-50%, -50%) scale(0.5); pointer-events: none; }\n\n/* --- 模糊蒙版 (优化定位和效果) --- */\n.blur-overlay {\n    position: absolute;\n    z-index: 12; /* 层级高于侧边卡片(8,9)，低于活跃卡片(10) */\n    pointer-events: none; /* 允许点击穿透 */\n    backdrop-filter: blur(4px);\n    -webkit-backdrop-filter: blur(4px); /* 兼容 Safari */\n    background: rgba(255, 255, 255, 0.1); /* 轻微的半透明背景增强模糊效果 */\n    transition: all 0.5s ease-in-out;\n    top: 50%;\n    transform: translateY(-50%);\n    height: calc(var(--card-height) + 40px); /* 稍微增加高度确保完全覆盖 */\n}\n\n/* 深色模式下的蒙版调整 */\nbody.dark-mode .blur-overlay {\n    background: rgba(0, 0, 0, 0.2);\n}\n\n/* 左侧蒙版 - 从左边缘到活跃卡片左边缘 */\n.blur-overlay.left {\n    left: 0;\n    width: calc(50% - var(--card-half-width)); /* 精确计算到活跃卡片左边缘 */\n}\n\n/* 右侧蒙版 - 从活跃卡片右边缘到右边缘 */\n.blur-overlay.right {\n    right: 0;\n    width: calc(50% - var(--card-half-width)); /* 精确计算从活跃卡片右边缘 */\n}\n\n\n/* --- 其他样式 --- (无变化) */\n.nav-btn { background-color: var(--nav-btn-bg); border: none; width: 50px; height: 50px; border-radius: 50%; font-size: 24px; color: var(--nav-btn-color); cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.1); transition: all 0.2s ease; margin: 0 2rem; z-index: 20; backdrop-filter: blur(5px); }\n.nav-btn:hover { transform: scale(1.1); background-color: var(--primary-color); color: white; }\nfooter { text-align: center; padding-top: 2rem; }\n#download-btn { background-color: var(--primary-color); color: white; border: none; padding: 12px 24px; font-size: 16px; border-radius: 24px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(98, 0, 234, 0.3); min-width: 220px; }\n#download-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(98, 0, 234, 0.4); }\n#download-btn:active { transform: translateY(0); }\n#theme-toggle { background: none; border: none; cursor: pointer; padding: 8px; border-radius: 50%; color: var(--text-color); }\n#theme-toggle svg { width: 24px; height: 24px; }\n.moon { display: none; }\nbody.dark-mode .sun { display: none; }\nbody.dark-mode .moon { display: block; }\n.btn-loader { border: 3px solid rgba(255,255,255,0.3); border-radius: 50%; border-top: 3px solid #fff; width: 18px; height: 18px; animation: spin 1s linear infinite; display: inline-block; }\n@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }\n    </style>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Konwledge-Card Factory</title>\n    <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n    <link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap\" rel=\"stylesheet\">\n</head>\n\n<body>\n\n    <div id=\"app-container\">\n        <!-- ... header 和 footer 内容保持不变 ... -->\n        <header>\n            <h1>Knowledge-Card</h1>\n            <div class=\"header-controls\">\n                <button id=\"orientation-toggle\" title=\"Toggle\">\n                    <svg t=\"1760703713093\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"1564\" width=\"200\" height=\"200\"><path d=\"M448 981.333333h-298.666667C89.6 981.333333 42.666667 934.4 42.666667 874.666667v-725.333334C42.666667 89.6 89.6 42.666667 149.333333 42.666667h298.666667C507.733333 42.666667 554.666667 89.6 554.666667 149.333333v725.333334c0 59.733333-46.933333 106.666667-106.666667 106.666666z m-298.666667-853.333333c-12.8 0-21.333333 8.533333-21.333333 21.333333v725.333334c0 12.8 8.533333 21.333333 21.333333 21.333333h298.666667c12.8 0 21.333333-8.533333 21.333333-21.333333v-725.333334c0-12.8-8.533333-21.333333-21.333333-21.333333h-298.666667zM832 388.266667c-8.533333 0-12.8 0-21.333333-4.266667-17.066667-8.533333-25.6-29.866667-21.333334-46.933333 0 0 12.8-51.2-17.066666-85.333334-17.066667-25.6-51.2-38.4-102.4-38.4-25.6 0-42.666667-17.066667-42.666667-42.666666s17.066667-42.666667 42.666667-42.666667c76.8 0 136.533333 21.333333 170.666666 68.266667 12.8 17.066667 21.333333 34.133333 29.866667 51.2l21.333333-21.333334c17.066667-17.066667 42.666667-17.066667 59.733334 0 17.066667 17.066667 17.066667 42.666667 0 59.733334l-85.333334 89.6c-12.8 8.533333-21.333333 12.8-34.133333 12.8zM874.666667 981.333333h-209.066667c-25.6 0-42.666667-17.066667-42.666667-42.666666s17.066667-42.666667 42.666667-42.666667h209.066667c12.8 0 21.333333-8.533333 21.333333-21.333333v-298.666667c0-12.8-8.533333-21.333333-21.333333-21.333333h-209.066667c-25.6 0-42.666667-17.066667-42.666667-42.666667s17.066667-42.666667 42.666667-42.666667h209.066667c59.733333 0 106.666667 46.933333 106.666666 106.666667v298.666667c0 59.733333-46.933333 106.666667-106.666666 106.666666z\" fill=\"#2c2c2c\" p-id=\"1565\"></path></svg>\n                </button>\n                <button id=\"theme-toggle\" title=\"Mode\">\n                <svg class=\"sun\" version=\"1.0\" xmlns=\"http://www.w3.org/2000/svg\" width=\"1280.000000pt\"\n                    height=\"1280.000000pt\" viewBox=\"0 0 1280.000000 1280.000000\" preserveAspectRatio=\"xMidYMid meet\">\n                    <g transform=\"translate(0.000000,1280.000000) scale(0.100000,-0.100000)\" fill=\"#000000\"\n                        stroke=\"none\">\n                        <path d=\"M4672 12780 c-18 -11 -39 -35 -46 -53 -11 -26 -15 -316 -21 -1478 -6\n-1296 -5 -1449 9 -1476 18 -36 65 -58 105 -50 15 3 177 89 359 190 l332 184\n386 7 c240 4 395 11 408 18 34 17 56 51 56 89 0 29 -129 256 -721 1270 -396\n679 -727 1244 -735 1257 -15 23 -71 62 -89 62 -5 0 -25 -9 -43 -20z\" />\n                        <path d=\"M9614 12131 c-25 -11 -2079 -2044 -2088 -2067 -3 -9 -6 -31 -6 -51 0\n-70 17 -77 423 -193 l368 -104 277 -268 c171 -165 289 -271 309 -278 41 -14\n96 8 116 47 8 15 55 183 105 373 50 190 208 793 352 1340 316 1204 292 1105\n276 1144 -7 17 -20 37 -29 44 -20 17 -77 24 -103 13z\" />\n                        <path d=\"M719 9742 c-18 -9 -40 -30 -47 -45 -33 -68 -75 -22 1023 -1130 564\n-569 1032 -1038 1041 -1041 8 -3 31 -6 51 -6 70 0 77 17 193 423 l104 368 266\n275 c148 154 271 290 278 308 12 28 11 38 -1 69 -9 20 -28 42 -44 50 -15 8\n-183 55 -373 105 -1345 353 -2409 631 -2431 636 -14 3 -39 -2 -60 -12z\" />\n                        <path d=\"M6212 9589 c-771 -43 -1484 -360 -2046 -908 -513 -501 -814 -1095\n-928 -1831 -19 -126 -22 -186 -22 -450 -1 -303 3 -359 41 -570 143 -805 615\n-1550 1288 -2032 581 -417 1302 -625 2036 -587 773 40 1488 356 2053 908 521\n509 821 1109 933 1866 22 153 25 669 5 810 -62 419 -156 721 -331 1060 -228\n444 -555 829 -952 1123 -482 356 -1112 583 -1689 607 -69 3 -154 7 -190 9 -36\n1 -125 -1 -198 -5z\" />\n                        <path d=\"M9769 8186 c-32 -19 -53 -67 -46 -105 3 -15 89 -177 190 -359 l184\n-332 7 -386 c4 -240 11 -395 18 -408 17 -35 51 -56 89 -56 29 0 258 130 1280\n726 684 400 1254 735 1266 746 12 11 27 33 33 49 10 24 9 34 -7 61 -40 71 71\n65 -1538 72 -1267 6 -1453 4 -1476 -8z\" />\n                        <path d=\"M1309 5534 c-684 -400 -1254 -735 -1266 -746 -12 -11 -27 -33 -33\n-49 -10 -24 -9 -34 7 -61 40 -70 -73 -64 1531 -73 1298 -6 1452 -5 1479 9 36\n18 58 65 50 105 -3 15 -89 177 -190 359 l-184 332 -7 386 c-4 240 -11 395 -18\n408 -17 35 -51 56 -89 56 -29 0 -258 -130 -1280 -726z\" />\n                        <path d=\"M9952 5253 c-23 -23 -45 -89 -132 -396 l-104 -368 -266 -275 c-147\n-153 -271 -290 -278 -308 -12 -28 -11 -38 1 -69 9 -20 28 -42 44 -50 15 -8\n183 -55 373 -105 190 -50 811 -213 1380 -362 569 -150 1049 -273 1066 -273 64\n-2 111 55 99 120 -5 26 -202 230 -1030 1066 -564 569 -1032 1038 -1041 1041\n-39 15 -86 6 -112 -21z\" />\n                        <path d=\"M3833 3625 c-17 -7 -38 -26 -46 -42 -8 -15 -55 -183 -105 -373 -50\n-190 -213 -811 -362 -1380 -150 -569 -273 -1049 -273 -1066 -2 -64 55 -111\n120 -99 26 5 230 202 1066 1030 569 564 1038 1032 1041 1041 3 8 6 31 6 51 0\n70 -17 77 -423 193 l-368 104 -276 266 c-248 239 -306 289 -338 289 -5 0 -24\n-6 -42 -14z\" />\n                        <path d=\"M8040 3062 c-19 -10 -174 -95 -345 -189 l-310 -171 -384 -7 c-238 -4\n-392 -10 -405 -17 -35 -17 -56 -51 -56 -89 0 -29 130 -258 726 -1280 400 -684\n735 -1254 746 -1266 11 -12 33 -27 49 -33 24 -10 34 -9 61 7 70 40 64 -73 72\n1530 8 1567 11 1490 -45 1519 -37 19 -68 18 -109 -4z\" />\n                    </g>\n                </svg>\n                <svg class=\"moon\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\">\n                    <path fill-rule=\"evenodd\"\n                        d=\"M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69a.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-3.836 2.04-7.172 5.028-9.016a.75.75 0 01.819.162z\"\n                        clip-rule=\"evenodd\" />\n                </svg>\n            </button>\n        </header>\n\n        <main>\n            <div class=\"card-carousel\">\n                <button id=\"prev-btn\" class=\"nav-btn\" title=\"上一张\">&lt;</button>\n\n                <div class=\"card-stack-wrapper\">\n                    <div id=\"card-stack\">\n                        <!-- 卡片将由 JavaScript 动态生成 -->\n                    </div>\n                </div>\n\n                <div class=\"blur-overlay left\"></div>\n                <div class=\"blur-overlay right\"></div>\n\n                <button id=\"next-btn\" class=\"nav-btn\" title=\"下一张\">&gt;</button>\n            </div>\n        </main>\n\n        <footer>\n            <button id=\"download-btn\">\n                <span class=\"btn-text\">Download All </span>\n                <span class=\"btn-loader\" style=\"display: none;\"></span>\n            </button>\n        </footer>\n\n    </div>\n\n    <!-- ... scripts 保持不变 ... -->\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js\"></script>\n    <script >\n\nfunction cleanJsonString(raw) {\n  // 把剩余的换行、回车、制表符转为显式的转义\n  raw = raw\n    .replace(/\\n/g, '\\\\n')\n    .replace(/\\r/g, '\\\\r')\n    .replace(/\\t/g, '\\\\t');\n  return raw;\n}\n\ndocument.addEventListener('DOMContentLoaded', () => {\n\n    // --- 1. 数据定义 ---\n    const safeJson = cleanJsonString('{{ JSON.stringify($json.htmlData) }}')\n    console.log(safeJson);\n    const fakeData = JSON.parse(safeJson);\n\n    // --- 2. DOM 元素获取 ---\n    const cardStack = document.getElementById('card-stack');\n    const prevBtn = document.getElementById('prev-btn');\n    const nextBtn = document.getElementById('next-btn');\n    const themeToggle = document.getElementById('theme-toggle');\n    const orientationToggle = document.getElementById('orientation-toggle');\n    const downloadBtn = document.getElementById('download-btn');\n\n    let currentIndex = 0;\n    let cards = [];\n\n    // --- CSS作用域化处理 ---\n    function scopeCSS(css, scopeClass) {\n        return css\n            // 替换 .card 选择器为更高特异性的选择器\n            .replace(/\\.card\\b/g, `.${scopeClass}.card`)\n            // 替换 .card 空格 后代选择器\n            .replace(/\\.card\\s+([>+~]|\\w)/g, `.${scopeClass}.card $1`)\n            // 替换以 .card 开头的规则\n            .replace(/^\\.card\\s*{/gm, `.${scopeClass}.card {`)\n            // 处理媒体查询中的 .card\n            .replace(/@media[^{]+\\{[\\s\\S]*?\\}/g, (match) => {\n                return match.replace(/\\.card\\b/g, `.${scopeClass}.card`);\n            });\n    }\n\n    // --- 动态样式注入 ---\n    function applyCardCSS(index, css) {\n        if (!css || css.trim() === '') return;\n\n        const scopeClass = `card-scope-${index}`;\n        const styleId = `card-style-${index}`;\n        \n        // 为卡片添加作用域类名\n        cards[index].classList.add(scopeClass);\n        \n        // 作用域化CSS\n        const scopedCSS = scopeCSS(css, scopeClass);\n        \n        // 创建或更新style标签\n        let styleElement = document.getElementById(styleId);\n        if (!styleElement) {\n            styleElement = document.createElement('style');\n            styleElement.id = styleId;\n            styleElement.textContent = scopedCSS;\n            document.head.appendChild(styleElement);\n        } else {\n            styleElement.textContent = scopedCSS;\n        }\n    }\n\n    // --- 3. 初始化 ---\n    function init() {\n        // 动态创建卡片\n        fakeData.forEach((data, index) => {\n            const card = document.createElement('div');\n            card.className = 'card';\n            card.innerHTML = data.content;\n            card.dataset.index = index;\n            cardStack.appendChild(card);\n            cards.push(card);\n            \n            // 应用自定义CSS样式\n            if (data.css) {\n                applyCardCSS(index, data.css);\n            }\n        });\n        \n        // 设置初始卡片位置\n        updateCardPositions();\n\n        // 绑定事件监听\n        prevBtn.addEventListener('click', () => navigate(-1));\n        nextBtn.addEventListener('click', () => navigate(1));\n        themeToggle.addEventListener('click', toggleTheme);\n        orientationToggle.addEventListener('click', toggleOrientation);\n        downloadBtn.addEventListener('click', downloadAllAsZip);\n\n        // 初始化主题\n        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;\n        const savedTheme = localStorage.getItem('theme');\n        if ((savedTheme === 'dark') || (!savedTheme && prefersDark)) {\n            document.body.classList.add('dark-mode');\n        }\n\n        // 初始化方向\n        const savedOrientation = localStorage.getItem('orientation');\n        if (savedOrientation === 'portrait') {\n            document.body.classList.add('portrait-mode');\n            updateOrientationButton('portrait');\n        } else {\n            updateOrientationButton('landscape');\n        }\n    }\n\n    // --- 4. 卡片切换逻辑 ---\n    function updateCardPositions() {\n        cards.forEach((card, index) => {\n            const diff = index - currentIndex;\n            \n            // 移除所有位置相关的 class\n            card.classList.remove('active', 'prev-1', 'prev-2', 'next-1', 'next-2', 'hidden');\n\n            if (diff === 0) {\n                card.classList.add('active');\n            } else if (diff === -1) {\n                card.classList.add('prev-1');\n            } else if (diff === -2) {\n                card.classList.add('prev-2');\n            } else if (diff === 1) {\n                card.classList.add('next-1');\n            } else if (diff === 2) {\n                card.classList.add('next-2');\n            } else {\n                card.classList.add('hidden');\n            }\n        });\n    }\n\n    function navigate(direction) {\n        currentIndex += direction;\n        // 循环切换\n        if (currentIndex < 0) {\n            currentIndex = cards.length - 1;\n        } else if (currentIndex >= cards.length) {\n            currentIndex = 0;\n        }\n        updateCardPositions();\n    }\n\n    // --- 5. 主题切换 ---\n    function toggleTheme() {\n        document.body.classList.toggle('dark-mode');\n        const theme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';\n        localStorage.setItem('theme', theme);\n    }\n\n    // --- 6. 方向切换 ---\n    function toggleOrientation() {\n        document.body.classList.toggle('portrait-mode');\n        const orientation = document.body.classList.contains('portrait-mode') ? 'portrait' : 'landscape';\n        localStorage.setItem('orientation', orientation);\n        \n        // 更新按钮图标（可选）\n        updateOrientationButton(orientation);\n    }\n\n    function updateOrientationButton(orientation) {\n        const icon = orientationToggle.querySelector('svg');\n        if (orientation === 'portrait') {\n            // 竖版图标 - 可以添加旋转效果\n            icon.style.transform = 'rotate(90deg)';\n        } else {\n            // 横版图标\n            icon.style.transform = 'rotate(0deg)';\n        }\n    }\n\n    // --- 6. 克隆卡片完整内容截图函数 (智能适配横版/竖版) ---\n    async function captureCardFullContent(originalCard, cardIndex) {\n        // 1. 智能检测当前方向和获取正确尺寸\n        const isPortraitMode = document.body.classList.contains('portrait-mode');\n        const computedStyle = getComputedStyle(document.body);\n        const standardWidth = parseInt(computedStyle.getPropertyValue('--card-width'));\n        const standardHeight = parseInt(computedStyle.getPropertyValue('--card-height'));\n        \n        // 2. 克隆卡片及其所有子元素\n        const cardClone = originalCard.cloneNode(true);\n        \n        // 3. 获取原始卡片的计算样式\n        const originalStyles = getComputedStyle(originalCard);\n        \n        // 4. 设置克隆元素的样式 - 关键：适配当前方向并允许内容完整显示\n        cardClone.style.position = 'absolute';\n        cardClone.style.left = '-9999px';\n        cardClone.style.top = '-9999px';\n        cardClone.style.width = `${standardWidth}px`; // 使用当前方向的标准宽度\n        cardClone.style.height = 'auto'; // 允许高度自动扩展\n        cardClone.style.minHeight = `${standardHeight}px`; // 保持最小高度\n        cardClone.style.maxHeight = 'none'; // 移除高度限制\n        cardClone.style.maxWidth = 'none';\n        cardClone.style.minWidth = 'auto';\n        cardClone.style.overflow = 'visible'; // 关键：让所有内容可见，无滚动条\n        cardClone.style.transform = 'none';\n        cardClone.style.opacity = '1';\n        cardClone.style.zIndex = '-9999';\n        cardClone.style.pointerEvents = 'none';\n        cardClone.style.visibility = 'visible';\n        \n        // 5. 确保克隆元素继承所有相关的CSS类和方向状态\n        cardClone.className = originalCard.className;\n        \n        // 6. 如果是竖版模式，确保克隆元素也应用相应的CSS变量\n        if (isPortraitMode) {\n            // 创建一个临时容器来应用竖版样式\n            const tempContainer = document.createElement('div');\n            tempContainer.className = 'portrait-mode';\n            tempContainer.style.position = 'absolute';\n            tempContainer.style.left = '-9999px';\n            tempContainer.style.top = '-9999px';\n            tempContainer.style.visibility = 'hidden';\n            tempContainer.appendChild(cardClone);\n            document.body.appendChild(tempContainer);\n        } else {\n            // 横版模式直接添加到body\n            document.body.appendChild(cardClone);\n        }\n        \n        // 7. 确保样式完全应用和字体加载完成\n        await new Promise(resolve => setTimeout(resolve, 300));\n        \n        try {\n            // 8. 获取内容的实际高度\n            const contentHeight = cardClone.scrollHeight;\n            const actualWidth = standardWidth;\n            \n            // 9. 智能计算最终截图尺寸\n            let finalWidth = actualWidth;\n            let finalHeight = Math.max(standardHeight, contentHeight);\n            \n            // 10. 如果内容高度远超标准高度，添加一些padding确保完整性\n            if (contentHeight > standardHeight) {\n                finalHeight = contentHeight + 40; // 添加padding\n            }\n            \n            // 11. 使用 html2canvas 截图克隆元素\n            const canvas = await html2canvas(cardClone, {\n                backgroundColor: originalStyles.backgroundColor,\n                scale: 2, // 高清截图\n                useCORS: true,\n                allowTaint: true,\n                width: finalWidth,\n                height: finalHeight,\n                windowWidth: finalWidth,\n                windowHeight: finalHeight,\n                scrollX: 0,\n                scrollY: 0,\n                logging: false,\n                removeContainer: false\n            });\n\n            // 12. 将 canvas 转换为 Blob 对象\n            const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));\n            \n            return blob;\n        } finally {\n            // 13. 确保清理克隆元素和临时容器\n            if (isPortraitMode) {\n                const tempContainer = cardClone.parentElement;\n                if (tempContainer && document.body.contains(tempContainer)) {\n                    document.body.removeChild(tempContainer);\n                }\n            } else {\n                if (document.body.contains(cardClone)) {\n                    document.body.removeChild(cardClone);\n                }\n            }\n        }\n    }\n\n    // --- 7. 下载功能 ---\n    async function downloadAllAsZip() {\n        const btnText = downloadBtn.querySelector('.btn-text');\n        const btnLoader = downloadBtn.querySelector('.btn-loader');\n\n        // 显示加载状态\n        btnText.style.display = 'none';\n        btnLoader.style.display = 'inline-block';\n        downloadBtn.disabled = true;\n\n        const zip = new JSZip();\n\n        try {\n            // 并行处理所有卡片截图（提升性能）\n            const capturePromises = cards.map(async (card, index) => {\n                const blob = await captureCardFullContent(card, index);\n                zip.file(`card_${index + 1}.png`, blob);\n            });\n\n            // 等待所有截图完成\n            await Promise.all(capturePromises);\n\n            // 生成 zip 文件\n            const content = await zip.generateAsync({ type: 'blob' });\n            \n            // 触发下载\n            const link = document.createElement('a');\n            link.href = URL.createObjectURL(content);\n            link.download = 'info_cards.zip';\n            document.body.appendChild(link);\n            link.click();\n            document.body.removeChild(link);\n            URL.revokeObjectURL(link.href); // 释放内存\n\n        } catch (error) {\n            console.error('截图或下载过程中出现错误:', error);\n            alert('截图过程中出现错误，请重试');\n        } finally {\n            // 恢复按钮状态\n            btnText.style.display = 'inline-block';\n            btnLoader.style.display = 'none';\n            downloadBtn.disabled = false;\n        }\n    }\n\n    // 启动应用\n    init();\n});\n    </script>\n</body>\n\n</html>\n"
+      },
+      "type": "n8n-nodes-base.html",
+      "typeVersion": 1.2,
+      "position": [
+        3248,
+        768
+      ],
+      "id": "7e1eba6a-fdfe-44d8-b7cb-a29d271852c7",
+      "name": "HTML"
+    },
+    {
+      "parameters": {
+        "operation": "toText",
+        "sourceProperty": "html",
+        "binaryPropertyName": "html",
+        "options": {
+          "encoding": "utf8",
+          "fileName": "out.html"
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        3456,
+        768
+      ],
+      "id": "5f5b7825-c154-400a-8dfa-9ca18976cafc",
+      "name": "Convert to File"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Set Fields And CSS": {
+      "main": [
+        [
+          {
+            "node": "Find CSS",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Form Fields": {
+      "main": [
+        [
+          {
+            "node": "Check Url",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Url": {
+      "main": [
+        [
+          {
+            "node": "Is Url",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Website": {
+      "main": [
+        [
+          {
+            "node": "Is error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Exctract HTML Body": {
+      "main": [
+        [
+          {
+            "node": "Remove extra tags",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Remove extra tags": {
+      "main": [
+        [
+          {
+            "node": "Simplify output",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simplify output": {
+      "main": [
+        [
+          {
+            "node": "Convert to Markdown",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to Markdown": {
+      "main": [
+        [
+          {
+            "node": "Send Page Content",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Page Content": {
+      "main": [
+        [
+          {
+            "node": "LLM Card",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Is error": {
+      "main": [
+        [
+          {
+            "node": "Stop and Error",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Exctract HTML Body",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Is Url": {
+      "main": [
+        [
+          {
+            "node": "Fetch Website",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "LLM Card",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Vercel AI Gateway Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "LLM Card",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On form submission2": {
+      "main": [
+        [
+          {
+            "node": "Form Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LLM Card": {
+      "main": [
+        [
+          {
+            "node": "Set Fields And CSS",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Find CSS": {
+      "main": [
+        [
+          {
+            "node": "Make HTML Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Make HTML Data": {
+      "main": [
+        [
+          {
+            "node": "HTML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTML": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "dc9b72ea-b789-4a5d-b5af-10508ec11718",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "54d3c4db9939996d77f243b379b259f0d9077be49daedcf7141eed93fc6b1d51"
+  },
+  "id": "Hcjr1Riy4OuZ2NxX",
+  "tags": [
+    {
+      "updatedAt": "2025-11-05T08:56:27.791Z",
+      "createdAt": "2025-11-05T08:56:27.791Z",
+      "id": "TNAnWwndFKXiVH6n",
+      "name": "MuleRun"
+    }
+  ]
+}
